@@ -1,0 +1,8 @@
+.list {
+    padding: 0;
+}
+
+.listItem {
+    display: flex;
+    align-items: center;
+}
