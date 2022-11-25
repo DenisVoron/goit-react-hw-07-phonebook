@@ -19,14 +19,14 @@ export function ContactsForm() {
     const handleSubmit = event => {
         event.preventDefault();
 
-        /*const addContact = [
+        const addContact = [
             name,
             phone,
-        ];*/
+        ];
 
         contact.some(currentName => currentName.name.toLowerCase() === name.toLowerCase())
       ? toast.warn(`${name} is already in contact`)
-      : dispatch(addContacts(name, phone));
+      : dispatch(addContacts(addContact));
 
         reset();
     };
