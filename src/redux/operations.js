@@ -15,11 +15,14 @@ export const fetchContacts = createAsyncThunk(
     }
 );
 
-export const addContacts = createAsyncThunk(
+export const addContact = createAsyncThunk(
     "contacts/addContact",
-    async (name, phone, thunkAPI) => {
+    async ({ name, number }, thunkAPI) => {
         try {
-            const response = await axios.post("/contacts", { name: name }, { phone: phone });
+            const response = await axios.post("/contacts", {
+                name: name,
+                phone: number,
+            });
             return response.data;
         } catch (e) {
             return thunkAPI.rejectWithValue(e.message);
@@ -27,12 +30,14 @@ export const addContacts = createAsyncThunk(
     }
 );
 
-
-
-/*const fetchUsers = () => {
-    return axios.get("https://637cfb729c2635df8f7ed55b.mockapi.io/contacts");
-    //const users = await response.json();
-    //return response;
-};
-
-fetchUsers().then(users => console.log(users));*/
+export const deleteContact = createAsyncThunk(
+    "contacts/deleteContact",
+    async (contactId, thunkAPI) => {
+        try {
+            const response = await axios.delete(`/contacts/${contactId}`);
+            return response.data;
+        } catch (e) {
+            return thunkAPI.rejectWithValue(e.message);
+        }
+    }
+);
