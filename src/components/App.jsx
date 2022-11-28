@@ -11,18 +11,16 @@ import { ContactList } from './ContactList/ContactList';
 import { useDispatch, useSelector } from "react-redux";
 import { useEffect } from "react";
 import { fetchContacts } from "redux/operations";
-import { getContacts, getIsLoading, getError } from "redux/contactsSlice";
+import { getIsLoading, getError } from "redux/contactsSlice";
+
+import css from "./App.module.css";
 
 
 export function App() {
 
   const dispatch = useDispatch();
 
-  const items = useSelector(getContacts);
-  console.log(items);
-
   const isLoading = useSelector(getIsLoading);
-  console.log(isLoading);
   const error = useSelector(getError);
 
     useEffect(() => {
@@ -33,7 +31,7 @@ export function App() {
     <Container>
       <Section title='Phonebook'>
         <ContactsForm />
-        {isLoading && !error && <b>Request in progress...</b>}
+        {isLoading && !error && <p className={css.loading}>Request in progress...</p>}
       </Section>
       <Section title='Contacts'>
         <Wrapper>

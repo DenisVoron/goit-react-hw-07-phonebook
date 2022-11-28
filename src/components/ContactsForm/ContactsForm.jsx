@@ -3,7 +3,7 @@ import { useDispatch } from "react-redux";
 import { useSelector } from "react-redux";
 import { getContacts } from "../../redux/contactsSlice";
 import { addContact } from "redux/operations";
-//import { nanoid } from 'nanoid';
+
 import { toast } from 'react-toastify';
 
 import css from './ContactsForm.module.css';
@@ -19,10 +19,10 @@ export function ContactsForm() {
     const handleSubmit = event => {
         event.preventDefault();
 
-        /*const addContact = [
+        /*const addContact = {
             name,
             number,
-        ];*/
+        };*/
 
         contact.some(currentName => currentName.name.toLowerCase() === name.toLowerCase())
       ? toast.warn(`${name} is already in contact`)
